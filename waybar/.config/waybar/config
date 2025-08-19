@@ -2,7 +2,7 @@
   "layer": "top",
     "modules-left": ["custom/arch", "hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["backlight", "pulseaudio", "bluetooth", "network", "battery"],
+    "modules-right": ["pulseaudio", "bluetooth", "network"],
     "custom/arch": {
       "format": "  ",
       "tooltip": false,
@@ -15,11 +15,6 @@
     },
     "clock": {
       "format": "<span color='#cba6f7'> </span>{:%H:%M}",
-    },
-    "backlight": {
-      "device": "intel_backlight",
-      "format": "<span color='#cba6f7'>{icon}</span> {percent}%",
-      "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "pulseaudio": {
       "format": "<span color='#cba6f7'>{icon}</span> {volume}%",
@@ -45,12 +40,6 @@
       "format-wifi": "<span color='#cba6f7'> </span>{essid}",
       "format-ethernet": "{ipaddr}/{cidr} ",
       "format-disconnected": "<span color='#cba6f7'>󰖪 </span>No Network",
-      "tooltip": false,
-    },
-    "battery": {
-      "format": "<span color='#cba6f7'>{icon}</span> {capacity}%",
-      "format-icons": ["", "", "", "", "", "", "", "", "", ""],
-      "format-charging": "<span color='#cba6f7'></span> {capacity}%",
       "tooltip": false,
     },
 }
