@@ -25,6 +25,7 @@
         "default": ["", "", "󰕾", "󰕾", "󰕾", "", "", ""]
       },
       "scroll-step": 1,
+      "on-click": "pavucontrol"
     },
     "bluetooth": {
       "format": "<span color='#cba6f7'></span> {status}",
@@ -35,10 +36,10 @@
       "on-click": "blueman-manager"
     },
     "network": {
-      "interface": "wlo1",
+      "interface": "enp34s0",
       "format": "{ifname}",
       "format-wifi": "<span color='#cba6f7'> </span>{essid}",
-      "format-ethernet": "{ipaddr}/{cidr} ",
+      "format-ethernet": "<span color='#cba6f7'> </span>{ipaddr}",
       "format-disconnected": "<span color='#cba6f7'>󰖪 </span>No Network",
       "tooltip": false,
     },
