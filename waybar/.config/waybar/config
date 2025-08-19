@@ -2,7 +2,7 @@
   "layer": "top",
     "modules-left": ["custom/arch", "hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "bluetooth", "network"],
+    "modules-right": ["pulseaudio", "bluetooth", "network", "custom/lock", "custom/power"],
     "custom/arch": {
       "format": "  ",
       "tooltip": false,
@@ -42,5 +42,15 @@
       "format-ethernet": "<span color='#cba6f7'> </span>{ipaddr}",
       "format-disconnected": "<span color='#cba6f7'>󰖪 </span>No Network",
       "tooltip": false,
+    },
+    "custom/lock": {
+        "tooltip": false,
+        "on-click": "hyprlock",
+        "format": "<span color='#cba6f7'></span>",
+    },
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout &"
     },
 }
