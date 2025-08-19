@@ -1,7 +1,7 @@
 {
   "layer": "top",
     "modules-left": ["custom/arch", "hyprland/workspaces"],
-    "modules-center": ["clock"],
+    "modules-center": ["clock#date", "clock#time"],
     "modules-right": ["pulseaudio", "bluetooth", "network", "custom/lock", "custom/power"],
     "custom/arch": {
       "format": "  ",
@@ -13,8 +13,11 @@
       "tooltip": false,
       "all-outputs": true,
     },
-    "clock": {
-      "format": "<span color='#cba6f7'> </span>{:%H:%M}",
+    "clock#date": {
+      "format": "<span color='#cba6f7'> </span>{:%A - %d. %B %Y}"
+    },
+    "clock#time": {
+      "format": "<span color='#cba6f7'> </span>{:%R}",
     },
     "pulseaudio": {
       "format": "<span color='#cba6f7'>{icon}</span> {volume}%",
