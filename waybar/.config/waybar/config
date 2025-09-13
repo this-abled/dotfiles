@@ -1,59 +1,113 @@
 {
   "layer": "top",
-    "modules-left": ["custom/arch", "hyprland/workspaces"],
-    "modules-center": ["clock#date", "clock#time"],
-    "modules-right": ["pulseaudio", "bluetooth", "network", "custom/lock", "custom/power"],
-    "custom/arch": {
-      "format": "  ",
-      "tooltip": false,
-      "on-click": "sh $HOME/.config/rofi/bin/powermenu"
+  "position": "top",
+  "height": 30,
+
+  "modules-left": [
+    "custom/arch",
+    "hyprland/workspaces",
+    "mpris"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "bluetooth",
+    "network",
+    "tray",
+    "custom/updates",
+    "custom/notifications",
+    "custom/lock",
+    "custom/power"
+  ],
+
+
+  "custom/arch": {
+    "format": "",
+    "tooltip": "Arch Linux",
+    "exec": "echo "
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "focused": "",
+      "default": ""
     },
-    "hyprland/workspaces": {
-      "format": "{name}",
-      "tooltip": false,
-      "all-outputs": true,
+    "on-click": "hyprctl dispatch workspace {id}"
+  },
+
+  "mpris": {
+    "format": " {title}",
+    "tooltip-format": "{player}: {title} - {artist}",
+    "max-length": 30,
+    "interval": 5
+  },
+
+  "clock": {
+    "format": " {:%A, %d. %B %Y   %H:%M}",
+    "tooltip-format": "{:%A, %d. %B %Y}",
+    "locale": "de_DE.UTF-8",
+    "interval": 60
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", ""]
     },
-    "clock#date": {
-      "format": "<span color='#cba6f7'> </span>{:%A - %d. %B %Y}"
-    },
-    "clock#time": {
-      "format": "<span color='#cba6f7'> </span>{:%R}",
-    },
-    "pulseaudio": {
-      "format": "<span color='#cba6f7'>{icon}</span> {volume}%",
-      "format-muted": "",
-      "tooltip": false,
-      "format-icons": {
-        "headphone": "",
-        "default": ["", "", "󰕾", "󰕾", "󰕾", "", "", ""]
-      },
-      "scroll-step": 1,
-      "on-click": "pavucontrol"
-    },
-    "bluetooth": {
-      "format": "<span color='#cba6f7'></span> {status}",
-      "format-disabled": "", // an empty format will hide the module
-      "format-connected": "<span color='#cba6f7'></span> {num_connections}",
-      "tooltip-format": "{device_enumerate}",
-      "tooltip-format-enumerate-connected": "{device_alias}   {device_address}",
-      "on-click": "blueman-manager"
-    },
-    "network": {
-      "interface": "enp34s0",
-      "format": "{ifname}",
-      "format-wifi": "<span color='#cba6f7'> </span>{essid}",
-      "format-ethernet": "<span color='#cba6f7'> </span>{ipaddr}",
-      "format-disconnected": "<span color='#cba6f7'>󰖪 </span>No Network",
-      "tooltip": false,
-    },
-    "custom/lock": {
-        "tooltip": false,
-        "on-click": "hyprlock",
-        "format": "<span color='#cba6f7'></span>",
-    },
-    "custom/power": {
-        "format": "⏻",
-        "tooltip": false,
-        "on-click": "wlogout --protocol layer-shell --buttons-per-row 6"
-    },
+    "on-click": "pavucontrol"
+  },
+
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {device_alias}",
+    "format-disabled": "",
+    "tooltip-format": "{controller_alias} | {status}"
+  },
+
+  "network": {
+    "format-wifi": " {essid}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "",
+    "tooltip-format": "{ifname} via {gwaddr}"
+  },
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10
+  },
+
+  "custom/updates": {
+    "format": " {}",
+    "exec": "~/.config/waybar/scripts/updates.sh",
+    "interval": 1800,
+    "tooltip": "System Updates verfügbar",
+    "on-click": "alacritty -e yay -Syu"
+  },
+
+  "custom/notifications": {
+    "format": "",
+    "tooltip": "Benachrichtigungen",
+    "on-click": "swaync-client -t"
+  },
+
+  "custom/lock": {
+    "format": "",
+    "tooltip": "Bildschirm sperren",
+    "on-click": "hyprlock"
+  },
+
+  "custom/power": {
+    "format": "",
+    "tooltip": "Power Menu",
+    "on-click": "wlogout -b 5 -c 0 -r 0 -T 400 -B 400"
+  }
 }
