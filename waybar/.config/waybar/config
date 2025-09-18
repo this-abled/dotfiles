@@ -1,113 +1,63 @@
 {
-  "layer": "top",
-  "position": "top",
-  "height": 30,
-
-  "modules-left": [
-    "custom/arch",
-    "hyprland/workspaces",
-    "mpris"
-  ],
-  "modules-center": [
-    "clock"
-  ],
-  "modules-right": [
-    "pulseaudio",
-    "bluetooth",
-    "network",
-    "tray",
-    "custom/updates",
-    "custom/notifications",
-    "custom/lock",
-    "custom/power"
-  ],
-
-
-  "custom/arch": {
-    "format": "",
-    "tooltip": "Arch Linux",
-    "exec": "echo "
-  },
-
-  "hyprland/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "focused": "",
-      "default": ""
+    "layer": "top",
+    "position": "top",
+    "modules-left": ["custom/arch", "hyprland/workspaces"],
+    "modules-center": ["mpris"],
+    "modules-right": ["pulseaudio", "clock", "tray", "custom/lock", "custom/power"],
+    "custom/arch": {
+          "format": " 󰣇 "
     },
-    "on-click": "hyprctl dispatch workspace {id}"
-  },
-
-  "mpris": {
-    "format": " {title}",
-    "tooltip-format": "{player}: {title} - {artist}",
-    "max-length": 30,
-    "interval": 5
-  },
-
-  "clock": {
-    "format": " {:%A, %d. %B %Y   %H:%M}",
-    "tooltip-format": "{:%A, %d. %B %Y}",
-    "locale": "de_DE.UTF-8",
-    "interval": 60
-  },
-
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": "",
-    "format-icons": {
-      "default": ["", "", ""]
+    "hyprland/workspaces": {
+         "disable-scroll": true,
+         "sort-by-name": true,
+         "format": " {icon} ",
+         "format-icons": {
+             "default": ""
+         }
+     },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
     },
-    "on-click": "pavucontrol"
+    "mpris": {
+      "format": "󰝚 {artist} - {title}",
+      "on-click": "playerctl play-pause",
+      "tooltip": false,
+      "max-length": 50,
+      "interval": 5
   },
-
-  "bluetooth": {
-    "format": " {status}",
-    "format-connected": " {device_alias}",
-    "format-disabled": "",
-    "tooltip-format": "{controller_alias} | {status}"
-  },
-
-  "network": {
-    "format-wifi": " {essid}",
-    "format-ethernet": "󰈀",
-    "format-disconnected": "",
-    "tooltip-format": "{ifname} via {gwaddr}"
-  },
-
-  "tray": {
-    "icon-size": 18,
-    "spacing": 10
-  },
-
-  "custom/updates": {
-    "format": " {}",
-    "exec": "~/.config/waybar/scripts/updates.sh",
-    "interval": 1800,
-    "tooltip": "System Updates verfügbar",
-    "on-click": "alacritty -e yay -Syu"
-  },
-
-  "custom/notifications": {
-    "format": "",
-    "tooltip": "Benachrichtigungen",
-    "on-click": "swaync-client -t"
-  },
-
-  "custom/lock": {
-    "format": "",
-    "tooltip": "Bildschirm sperren",
-    "on-click": "hyprlock"
-  },
-
-  "custom/power": {
-    "format": "",
-    "tooltip": "Power Menu",
-    "on-click": "wlogout -b 5 -c 0 -r 0 -T 400 -B 400"
-  }
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": " {:%d.%m.%Y}",
+        "format": " {:%H:%M}"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        "format-charging": "",
+        "format-plugged": "",
+        "format-alt": "{icon}",
+        "format-icons": ["", "",  "", "", "", "", "", "", "", "", "", ""]
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", "", " "]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/lock": {
+        "tooltip": false,
+        "on-click": "sh -c '(sleep 0.5s; swaylock --grace 0)' & disown",
+        "format": ""
+    },
+    "custom/power": {
+        "tooltip": false,
+        "on-click": "wlogout --protocol layer-shell -b 6 &",
+        "format": ""
+    }
 }
