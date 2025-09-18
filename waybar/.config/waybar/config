@@ -3,7 +3,7 @@
     "position": "top",
     "modules-left": ["custom/arch", "hyprland/workspaces"],
     "modules-center": ["mpris"],
-    "modules-right": ["pulseaudio", "clock", "tray", "custom/lock", "custom/power"],
+    "modules-right": ["pulseaudio", "clock", "tray", "custom/notifications", "custom/lock", "custom/power"],
     "custom/arch": {
           "format": " 󰣇 "
     },
@@ -49,6 +49,10 @@
             "default": ["", "", " "]
         },
         "on-click": "pavucontrol"
+    },
+    "custom/notifications": {
+      "format": "",
+      "on-click": "swaync-client -t"
     },
     "custom/lock": {
         "tooltip": false,

@@ -49,6 +49,7 @@
 #clock,
 #battery,
 #pulseaudio,
+#custom-notifications,
 #custom-lock,
 #custom-power {
   background-color: @surface0;
@@ -59,6 +60,12 @@
 #clock {
   color: @blue;
   border-radius: 0px 1rem 1rem 0px;
+  margin-right: 1rem;
+}
+
+#custom-notifications {
+  color: @blue;
+  border-radius: 1rem;
   margin-right: 1rem;
 }
 
