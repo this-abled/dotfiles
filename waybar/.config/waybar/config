@@ -21,6 +21,7 @@
     },
     "mpris": {
       "format": "󰝚 {artist} - {title}",
+      "format-paused": "󰝛 {artist} - {title}",
       "on-click": "playerctl play-pause",
       "tooltip": false,
       "max-length": 50,
@@ -30,17 +31,6 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": " {:%d.%m.%Y}",
         "format": " {:%H:%M}"
-    },
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon}",
-        "format-charging": "",
-        "format-plugged": "",
-        "format-alt": "{icon}",
-        "format-icons": ["", "",  "", "", "", "", "", "", "", "", "", ""]
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
